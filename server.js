@@ -7,9 +7,6 @@ const serviceObj = require("./services");
 const bannerObj = require("./banner");
 const carouselObj = require("./carousel");
 
-// console.log(carouselObj);
-
-
 function getRequestData(request) {
     if (request.url === '/services') {
         return JSON.stringify(serviceObj);
@@ -23,7 +20,6 @@ function getRequestData(request) {
     else if (request.url === '/bookHotel') {
         return JSON.stringify(carouselObj);
     }
-
     else
         console.log("Can't find data");
 }
@@ -38,9 +34,8 @@ const ourServer = http.createServer((request, response) => {
         });
         request.on("end", () => {
             let totalFormData = Buffer.concat(formData).toString();
-            console.log("form", totalFormData);
             if (totalFormData.length > 0) {
-                (async function () {
+                async function formDetails() {
                     const dataFromFile = await fs.readFile("./form-data.txt", "utf8");
                     let arr = [];
                     if (dataFromFile) {
@@ -53,7 +48,8 @@ const ourServer = http.createServer((request, response) => {
                         console.log("formData", arr);
                     }
                     await fs.writeFile("./form-data.txt", JSON.stringify(arr));
-                })();
+                }
+                formDetails();
             }
         });
         response.end(getRequestData(request));
