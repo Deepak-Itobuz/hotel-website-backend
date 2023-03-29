@@ -1,11 +1,12 @@
 const fs = require('fs/promises')
 const http = require('http');
-const path = require('path');
+// const path = require('path');
 const hostname = '127.0.0.1';
 
 const serviceObj = require("./services");
 const bannerObj = require("./banner");
 const carouselObj = require("./carousel");
+
 
 function getRequestData(request) {
     if (request.url === '/services') {
@@ -15,10 +16,11 @@ function getRequestData(request) {
         return JSON.stringify(bannerObj);
     }
     else if (request.url === '/carousel') {
+        console.log(carouselObj);
         return JSON.stringify(carouselObj);
     }
     else if (request.url === '/bookHotel') {
-        return JSON.stringify(carouselObj);
+        return JSON.stringify(bookHotelObj);
     }
     else
         console.log("Can't find data");
