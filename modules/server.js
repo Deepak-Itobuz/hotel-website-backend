@@ -1,11 +1,10 @@
 const fs = require('fs/promises')
 const http = require('http');
-// const path = require('path');
 const hostname = '127.0.0.1';
 
-const serviceObj = require("./services");
-const bannerObj = require("./banner");
-const carouselObj = require("./carousel");
+const serviceObj = require("../database/services");
+const bannerObj = require("../database/banner");
+const carouselObj = require("../database/carousel");
 
 
 function getRequestData(request) {
@@ -18,9 +17,6 @@ function getRequestData(request) {
     else if (request.url === '/carousel') {
         console.log(carouselObj);
         return JSON.stringify(carouselObj);
-    }
-    else if (request.url === '/bookHotel') {
-        return JSON.stringify(bookHotelObj);
     }
     else
         console.log("Can't find data");
@@ -38,7 +34,7 @@ const ourServer = http.createServer((request, response) => {
             let totalFormData = Buffer.concat(formData).toString();
             if (totalFormData.length > 0) {
                 async function formDetails() {
-                    const dataFromFile = await fs.readFile("./form-data.txt", "utf8");
+                    const dataFromFile = await fs.readFile("../database/form-data.txt", "utf8");
                     let arr = [];
                     if (dataFromFile) {
                         arr = JSON.parse(dataFromFile);
@@ -49,7 +45,7 @@ const ourServer = http.createServer((request, response) => {
                         arr.push(totalFormData);
                         console.log("formData", arr);
                     }
-                    await fs.writeFile("./form-data.txt", JSON.stringify(arr));
+                    await fs.writeFile("../database/form-data.txt", JSON.stringify(arr));
                 }
                 formDetails();
             }
