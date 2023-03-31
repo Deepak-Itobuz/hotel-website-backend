@@ -15,7 +15,6 @@ function getRequestData(request) {
         return JSON.stringify(bannerObj);
     }
     else if (request.url === '/carousel') {
-        console.log(carouselObj);
         return JSON.stringify(carouselObj);
     }
     else

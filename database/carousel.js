@@ -1,6 +1,6 @@
 const carouselObj = [
     {
-        imageUrl: "./images/hotel-rooms/dulexRoom.jpeg",
+        imageUrl: "./images/content/hotel-rooms/dulexRoom.jpeg",
         subHeading: "ELEGANCE AND COMFORT",
         heading: "Standard Room",
         rate: "$150",
@@ -11,7 +11,7 @@ const carouselObj = [
         view: "Garden View"
     },
     {
-        imageUrl: "./images/hotel-rooms/standardRoom.jpg",
+        imageUrl: "./images/content/hotel-rooms/standardRoom.jpg",
         subHeading: "ELEGANCE ",
         heading: "Luxury Room",
         rate: "$250",
@@ -22,7 +22,7 @@ const carouselObj = [
         view: "Beach View"
     },
     {
-        imageUrl: "./images/hotel-rooms/superDulexRoom.jpg",
+        imageUrl: "./images/content/hotel-rooms/superDulexRoom.jpg",
         subHeading: "Comfortable",
         heading: "Super Deluxe Room",
         rate: "$350",
